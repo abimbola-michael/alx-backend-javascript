@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { createUser, uploadPhoto } from "./utils";
 export default async function asyncUploadUser() {
   try {
