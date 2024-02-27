@@ -1,5 +1,4 @@
 const http = require("http");
-//const countStudents = require("./3-read_file_async");
 const { readFile } = require("fs");
 
 const port = 1245;
@@ -9,6 +8,7 @@ function countStudents(path) {
   const students = {};
   return new Promise((resolve, reject) => {
     readFile(path, (err, data) => {
+      const results = [];
       if (err) {
         reject(Error("Cannot load the database"));
       } else {
@@ -30,16 +30,16 @@ function countStudents(path) {
           }
           length++;
         }
-        console.log(`Number of students: ${length}`);
+        results.push(`Number of students: ${length}`);
         for (const field in students) {
           const names = students[field];
-          console.log(
+          results.push(
             `Number of students in ${field}: ${
               names.length
             }. List: ${names.join(", ")}`
           );
         }
-        resolve(data);
+        resolve(results.join("\n"));
       }
     });
   });
@@ -47,19 +47,19 @@ function countStudents(path) {
 const app = http.createServer((req, res) => {
   res.statusCode = 200;
   res.setHeader("Content-Type", "text/plain");
-  if (res.url === "/") {
-    res.write("Hello Holberton School!");
-    res.end();
+  if (req.url === "/") {
+    res.end("Hello Holberton School!");
   }
-  if (res.url === "/students") {
+  if (req.url === "/students") {
     res.write("This is the list of our students\n");
     const path = process.argv[2].toString();
+
     countStudents(path)
       .then((data) => {
         res.end(data.toString().trim());
       })
       .catch((err) => {
-        res.statusCode = 404;
+        res.statusCode = 500;
         res.end("Cannot load the database");
       });
   }
