@@ -1,7 +1,7 @@
 // const { readFile } = require("fs");
 import { readFile } from 'fs';
 
-function readDatabase(path) {
+function readDatabase (path) {
   const students = {};
   return new Promise((resolve, reject) => {
     readFile(path, (err, data) => {

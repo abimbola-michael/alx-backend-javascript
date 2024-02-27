@@ -2,7 +2,7 @@
 import readDatabase from '../utils';
 
 class StudentsController {
-  static async getAllStudents(request, response) {
+  static async getAllStudents (request, response) {
     try {
       const students = await readDatabase(process.argv[2]);
       const results = ['This is the list of our students'];
@@ -25,7 +25,7 @@ class StudentsController {
     }
   }
 
-  static async getAllStudentsByMajor(request, response) {
+  static async getAllStudentsByMajor (request, response) {
     const { major } = request.params;
     if (major !== 'CS' && major !== 'SWE') {
       // response.statusCode = 500;
