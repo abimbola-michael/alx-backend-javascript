@@ -1,24 +1,23 @@
-//const { readFile } = require("fs");
-import exp from "constants";
-import { readFile } from "fs";
+// const { readFile } = require("fs");
+import { readFile } from 'fs';
+
 function readDatabase(path) {
   const students = {};
   return new Promise((resolve, reject) => {
     readFile(path, (err, data) => {
       if (err) {
-        reject(Error("Cannot load the database"));
+        reject(Error('Cannot load the database'));
       } else {
         const content = data.toString();
-        const lines = content.split("\n");
-        const length = lines.length - 1;
+        const lines = content.split('\n');
         for (let i = 0; i < lines.length; i++) {
           const line = lines[i];
           if (!line) continue;
-          const values = line.split(",");
+          const values = line.split(',');
           const field = values[3].trim();
           const firstname = values[0].trim();
 
-          if (field === "field") continue;
+          if (field === 'field') continue;
           if (students[field] !== undefined) {
             students[field].push(firstname);
           } else {
@@ -32,5 +31,5 @@ function readDatabase(path) {
   });
 }
 
-//module.exports = readDatabase;
+// module.exports = readDatabase;
 export default readDatabase;

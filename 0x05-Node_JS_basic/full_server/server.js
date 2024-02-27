@@ -1,10 +1,10 @@
-import express from "express";
-import routes from "./routes/index";
+import express from 'express';
+import routes from './routes/index';
 
 const app = express();
 const PORT = 1245;
 
-app.use("/", routes);
+app.use('/', routes);
 app.listen(PORT, () => {});
 
 export default app;

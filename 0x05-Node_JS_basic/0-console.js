@@ -1,4 +1,3 @@
-
 function displayMessage(arg) {
   console.log(arg);
 }
