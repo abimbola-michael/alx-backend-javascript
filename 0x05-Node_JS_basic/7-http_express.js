@@ -50,13 +50,13 @@ app.get("/", (req, res) => {
 });
 
 app.get("/students", (req, res) => {
-  const path = process.argv[2];
+  const path = process.argv[2].toString();
   countStudents(path)
     .then((data) => {
-      res.send("This is the list of our students\n", data.toString().trim());
+      res.send(`This is the list of our students\n${data.toString().trim()}`);
     })
     .catch((err) => {
-      res.send("This is the list of our students\n", err.message);
+      res.send("This is the list of our students\nCannot load the database");
     });
 });
 
