@@ -1,7 +1,11 @@
 {
+  "name": "0x06-unittests_in_js",
+  "version": "1.0.0",
+  "description": "Unit tests in JavaScript",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha '*.test.js'"
   },
+  "author": "Abimbola Michael",
   "devDependencies": {
     "chai": "^5.1.0",
     "mocha": "^10.3.0",
