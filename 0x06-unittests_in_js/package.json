@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Unit tests in JavaScript",
   "scripts": {
-    "test": "mocha '*.test.js'"
+    "test": "mocha"
   },
   "author": "Abimbola Michael",
   "devDependencies": {
