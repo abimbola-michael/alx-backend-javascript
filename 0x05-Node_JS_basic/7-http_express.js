@@ -55,7 +55,7 @@ app.get('/students', (req, res) => {
     .then(data => {
       res.send(`This is the list of our students\n${data.toString().trim()}`);
     })
-    .catch(err => {
+    .catch(() => {
       res.send('This is the list of our students\nCannot load the database');
     });
 });

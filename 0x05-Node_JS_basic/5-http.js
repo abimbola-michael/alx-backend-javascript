@@ -58,7 +58,7 @@ const app = http.createServer((req, res) => {
       .then(data => {
         res.end(data.toString().trim());
       })
-      .catch(err => {
+      .catch(() => {
         res.statusCode = 500;
         res.end('Cannot load the database');
       });
