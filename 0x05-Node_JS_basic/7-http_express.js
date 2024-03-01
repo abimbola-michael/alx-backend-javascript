@@ -4,7 +4,7 @@ const { readFile } = require('fs');
 const app = express();
 const port = 1245;
 
-function countStudents (path) {
+function countStudents(path) {
   const students = {};
   return new Promise((resolve, reject) => {
     readFile(path, (err, data) => {
@@ -53,7 +53,7 @@ app.get('/', (req, res) => {
 app.get('/students', (req, res) => {
   const path = process.argv[2].toString();
   countStudents(path)
-    .then(data => {
+    .then((data) => {
       res.send(`This is the list of our students\n${data.toString().trim()}`);
     })
     .catch(() => {

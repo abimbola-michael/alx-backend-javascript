@@ -4,7 +4,7 @@ const { readFile } = require('fs');
 const port = 1245;
 const host = '127.0.0.1';
 
-function countStudents (path) {
+function countStudents(path) {
   const students = {};
   return new Promise((resolve, reject) => {
     readFile(path, (err, data) => {
@@ -56,7 +56,7 @@ const app = http.createServer((req, res) => {
     const path = process.argv[2].toString();
 
     countStudents(path)
-      .then(data => {
+      .then((data) => {
         res.end(data.toString().trim());
       })
       .catch(() => {
