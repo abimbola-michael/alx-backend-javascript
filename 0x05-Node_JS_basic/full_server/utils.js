@@ -1,7 +1,7 @@
 // const { readFile } = require("fs");
 import { readFile } from 'fs';
 
-function readDatabase (path) {
+function readDatabase(path) {
   const students = {};
   return new Promise((resolve, reject) => {
     readFile(path, (err, data) => {
@@ -10,18 +10,20 @@ function readDatabase (path) {
       } else {
         const content = data.toString();
         const lines = content.split('\n');
-        for (let i = 0; i < lines.length; i++) {
+        for (let i = 0; i < lines.length; i += 1) {
           const line = lines[i];
-          if (!line) continue;
-          const values = line.split(',');
-          const field = values[3].trim();
-          const firstname = values[0].trim();
+          if (line) {
+            const values = line.split(',');
+            const field = values[3].trim();
+            const firstname = values[0].trim();
 
-          if (field === 'field') continue;
-          if (students[field] !== undefined) {
-            students[field].push(firstname);
-          } else {
-            students[field] = [firstname];
+            if (field !== 'field') {
+              if (students[field] !== undefined) {
+                students[field].push(firstname);
+              } else {
+                students[field] = [firstname];
+              }
+            }
           }
         }
 
