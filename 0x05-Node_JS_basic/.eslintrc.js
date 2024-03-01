@@ -15,9 +15,6 @@ module.exports = {
   },
   plugins: ["jest"],
   rules: {
-    "no-plusplus": "off", // Allow unary operator '++'
-    "no-continue": "off", // Allow use of 'continue' statement
-    "guard-for-in": "off", // Require 'for-in' loops to be wrapped in an if statement
     "max-classes-per-file": "off",
     "no-underscore-dangle": "off",
     "no-console": "off",

@@ -10,24 +10,25 @@ function countStudents (path) {
         const content = data.toString().trim();
         const lines = content.split('\n');
         let length = 0;
-        for (let i = 0; i < lines.length; i++) {
+        for (let i = 0; i < lines.length; i += 1) {
           const line = lines[i].toString();
-          if (!line) continue;
-          const values = line.split(',');
-          const field = values[3].trim();
-          const firstname = values[0].trim();
+          if (line) {
+            const values = line.split(',');
+            const field = values[3].trim();
+            const firstname = values[0].trim();
 
-          if (field === 'field') continue;
-          if (students[field] !== undefined) {
-            students[field].push(firstname);
-          } else {
-            students[field] = [firstname];
+            if (field !== 'field') {
+              if (students[field] !== undefined) {
+                students[field].push(firstname);
+              } else {
+                students[field] = [firstname];
+              }
+              length += 1;
+            }
           }
-          length++;
         }
         console.log(`Number of students: ${length}`);
-        for (const field in students) {
-          const names = students[field];
+        for (const [field, names] of Object.entries(students)) {
           console.log(
             `Number of students in ${field}: ${
               names.length
