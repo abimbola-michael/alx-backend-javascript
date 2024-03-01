@@ -12,6 +12,7 @@ describe("sendPaymentRequestToApi", () => {
   });
   it("checking if called with correct arguments", () => {
     sendPaymentRequestToApi(100, 20);
-    expect(calculateNumberSpy.calledOnceWithExactly("SUM", 100, 20)).to.be.true;
+    expect(calculateNumberSpy.calledOnce).to.be.true;
+    expect(calculateNumberSpy.calledWith("SUM", 100, 20)).to.be.true;
   });
 });
